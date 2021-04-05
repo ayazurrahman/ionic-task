@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/user.service';
 
 @Component({
   selector: 'app-create-user',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-user.page.scss'],
 })
 export class CreateUserPage implements OnInit {
-
-  constructor() { }
+  user:any={};
+  constructor(private userService:UserService) { }
 
   ngOnInit() {
+  }
+  submitUser(){
+    console.log(this.user)
+    this.userService.saveUser(this.user).subscribe((res)=>{
+      console.log(res)
+    })
   }
 
 }

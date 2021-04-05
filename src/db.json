@@ -1,0 +1,33 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "first_name": "Berry ",
+      "last_name": "Allen",
+      "age": 24,
+      "designation": "Software Engineer"
+    },
+    {
+      "id": 2,
+      "first_name": "Rick ",
+      "last_name": "ShGrimesaikh",
+      "age": 28,
+      "designation": "UI Dev"
+    },
+    {
+      "id": 3,
+      "first_name": "Jon",
+      "last_name": "Kolen",
+      "age": 30,
+      "designation": "Software Tester"
+    },
+    {
+      "first_name": "a",
+      "last_name": "a",
+      "designation": "a",
+      "age": 21,
+      "email": "s@as",
+      "id": 4
+    }
+  ]
+}
