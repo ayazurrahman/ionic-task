@@ -1,4 +1,7 @@
+import { ResourceLoader } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { UserService } from 'src/app/user.service';
 
 @Component({
   selector: 'app-users',
@@ -6,10 +9,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./users.page.scss'],
 })
 export class UsersPage implements OnInit {
-
-  constructor() { }
+  users:any
+  constructor(private userService:UserService, private route:ActivatedRoute) { }
 
   ngOnInit() {
+      this.userService.getUsers().subscribe((res)=>{
+        console.log(res)
+        this.users = res
+      });
+  }
+
+  deleteUser(id){
+    this.userService.deleteUser(id).subscribe((res)=>{
+      console.log(res)
+    })
   }
 
 }

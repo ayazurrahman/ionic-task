@@ -1,24 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/user.service';
 
 @Component({
-  selector: 'app-create-user',
-  templateUrl: './create-user.page.html',
-  styleUrls: ['./create-user.page.scss'],
+  selector: 'app-edit-user',
+  templateUrl: './edit-user.page.html',
+  styleUrls: ['./edit-user.page.scss'],
 })
-export class CreateUserPage implements OnInit {
-  user:any={};
-  isCreate:boolean = true;
-  constructor(private userService:UserService, private router:Router, private route:ActivatedRoute) { }
+export class EditUserPage implements OnInit {
+  user:any
+  constructor(private router:Router, private route:ActivatedRoute, private userService:UserService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe((paramMap)=>{
       if(paramMap){
-        this.isCreate = false;
-        console.log(paramMap)
         let paramData = paramMap['params']
-        console.log(paramData)
         this.user = {
           'first_name':paramData['first_name'],
           'last_name':paramData['last_name'],
@@ -31,9 +27,10 @@ export class CreateUserPage implements OnInit {
       }
     })
   }
-  submitUser(){
-    console.log(this.user)
-    this.userService.saveUser(this.user).subscribe((res)=>{
+
+  updatetUser(){
+    console.log("Send Data",this.user)
+    this.userService.updateUser(this.user).subscribe((res)=>{
       console.log(res)
     });
     this.router.navigateByUrl('/admin')

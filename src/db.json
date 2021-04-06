@@ -5,29 +5,25 @@
       "first_name": "Berry ",
       "last_name": "Allen",
       "age": 24,
-      "designation": "Software Engineer"
+      "designation": "Software Engineer",
+      "password": "12345"
     },
     {
       "id": 2,
       "first_name": "Rick ",
       "last_name": "ShGrimesaikh",
       "age": 28,
-      "designation": "UI Dev"
+      "designation": "UI Dev",
+      "password": "12345"
     },
     {
-      "id": 3,
       "first_name": "Jon",
-      "last_name": "Kolen",
+      "last_name": "Snow",
       "age": 30,
-      "designation": "Software Tester"
-    },
-    {
-      "first_name": "a",
-      "last_name": "a",
-      "designation": "a",
-      "age": 21,
-      "email": "s@as",
-      "id": 4
+      "designation": "King of the North",
+      "email": "jon@gmail.com",
+      "password": "123456",
+      "id": 3
     }
   ]
 }
