@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid padding>
+  <form #login="ngForm" (ngSubmit)="loginForm(login)">
+  <ion-segment value="admin" (ionChange)="segmentChanged($event, login)">
+    <ion-segment-button value="admin">
+      <ion-label>Admin</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="user">
+      <ion-label>User</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="email" name="email" ngModel required email></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type="password" name="password" ngModel required minlength="5"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+          <ion-button expand="full" [disabled]="login.invalid" type="submit">Login</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+  </ion-grid>
+</ion-content>

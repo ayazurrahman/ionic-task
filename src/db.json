@@ -1,22 +1,6 @@
 {
   "users": [
     {
-      "id": 1,
-      "first_name": "Berry ",
-      "last_name": "Allen",
-      "age": 24,
-      "designation": "Software Engineer",
-      "password": "12345"
-    },
-    {
-      "id": 2,
-      "first_name": "Rick ",
-      "last_name": "ShGrimesaikh",
-      "age": 28,
-      "designation": "UI Dev",
-      "password": "12345"
-    },
-    {
       "first_name": "Jon",
       "last_name": "Snow",
       "age": 30,
@@ -24,6 +8,30 @@
       "email": "jon@gmail.com",
       "password": "123456",
       "id": 3
+    },
+    {
+      "first_name": "Berry",
+      "last_name": "Allen",
+      "age": 24,
+      "designation": "Software Eng",
+      "email": "berry@gmail.com",
+      "password": "12345",
+      "id": 4
+    },
+    {
+      "first_name": "Jhon",
+      "last_name": "Doe",
+      "age": 332,
+      "designation": "Tester",
+      "email": "doe@gmail.com",
+      "password": "123456",
+      "id": 5
+    }
+  ],
+  "admin": [
+    {
+      "email": "admin@admin.com",
+      "password": "123456"
     }
   ]
 }

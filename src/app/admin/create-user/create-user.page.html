@@ -9,13 +9,13 @@
 </ion-header>
 
 <ion-content>
-  <form (ngSubmit)="submitUser()">
+  <form #userForm="ngForm" (ngSubmit)="submitUser()" >
   <ion-grid>
     <ion-row>
       <ion-col>
         <ion-item>
           <ion-label position="floating">First Name</ion-label>
-          <ion-input type="text" [(ngModel)]="user.first_name" name="fname"></ion-input>
+          <ion-input type="text" [(ngModel)]="user.first_name" name="fname" required></ion-input>
         </ion-item>
       </ion-col>
       <ion-col>
@@ -43,19 +43,19 @@
       <ion-col>
         <ion-item>
           <ion-label position="floating">Email</ion-label>
-          <ion-input type="email" [(ngModel)]="user.email" name="email"></ion-input>
+          <ion-input type="email" [(ngModel)]="user.email" name="email" required></ion-input>
         </ion-item>
       </ion-col>
       <ion-col>
         <ion-item>
           <ion-label position="floating">Password</ion-label>
-          <ion-input type="password" [(ngModel)]="user.password" name="password"></ion-input>
+          <ion-input type="password" [(ngModel)]="user.password" name="password" required></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col size="4">
-          <ion-button expand="full" type="submit">Submit</ion-button>
+          <ion-button expand="block" type="submit" [disabled]="userForm.invalid">Submit</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

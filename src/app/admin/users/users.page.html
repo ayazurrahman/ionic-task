@@ -1,5 +1,6 @@
 <ion-header>
   <ion-toolbar>
+
     <ion-title>Manage Users</ion-title>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/admin">
@@ -17,7 +18,7 @@
             <ion-avatar slot="start">
               <img src="https://www.searchpng.com/wp-content/uploads/2019/02/Men-Profile-Image.png">
             </ion-avatar>
-            <label >{{item.first_name}} {{item.last_name}}</label>
+            <label [routerLink]="['/', 'admin', 'users', 'details', item]">{{item.first_name}} {{item.last_name}}</label>
               <ion-icon name="create" slot="end" color="secondary" [routerLink]="['/','admin','create-user','edit', item]"></ion-icon>
               <ion-icon name="trash" slot="end" color="secondary" (click)="deleteUser(item.id)"></ion-icon>
           </ion-item>
