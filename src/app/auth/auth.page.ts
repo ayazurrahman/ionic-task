@@ -22,12 +22,7 @@ export class AuthPage implements OnInit {
       this.user = res;
       console.log(this.user)
     })
-    if(this.role == "admin" && this.authService.isAdminLogged){
-      this.route.navigateByUrl('/admin')
-    }
-    if(this.role == "user" && this.authService.isLoggedIn){
-      this.route.navigateByUrl('/user-dash')
-    }
+
   }
 
   segmentChanged(event, formData){
