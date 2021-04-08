@@ -7,31 +7,59 @@
       "designation": "King of the North",
       "email": "jon@gmail.com",
       "password": "123456",
-      "id": 3
+      "id": 3,
+      "type": "user",
+      "active": false
     },
     {
       "first_name": "Berry",
       "last_name": "Allen",
-      "age": 24,
+      "age": "24",
       "designation": "Software Eng",
       "email": "berry@gmail.com",
       "password": "12345",
-      "id": 4
+      "id": 4,
+      "type": "user"
     },
     {
       "first_name": "Jhon",
       "last_name": "Doe",
-      "age": 332,
-      "designation": "Tester",
+      "age": 30,
+      "designation": "Consultant",
       "email": "doe@gmail.com",
       "password": "123456",
-      "id": 5
+      "id": 5,
+      "type": "user",
+      "active": false
+    },
+    {
+      "first_name": "Lerry",
+      "last_name": "Paige",
+      "age": 42,
+      "designation": "CEO",
+      "email": "lerry@gmail.com",
+      "password": "123456",
+      "id": 6,
+      "type": "user",
+      "active": true
+    },
+    {
+      "first_name": "Ayazur Rahman",
+      "last_name": "Shaikh",
+      "designation": "Software Engineer",
+      "age": 24,
+      "email": "ayazur@gmail.com",
+      "password": "123456",
+      "type": "user",
+      "active": true,
+      "id": 7
     }
   ],
   "admin": [
     {
       "email": "admin@admin.com",
-      "password": "123456"
+      "password": "123456",
+      "type": "admin"
     }
   ]
 }

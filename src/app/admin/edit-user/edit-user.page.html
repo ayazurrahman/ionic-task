@@ -9,7 +9,7 @@
 </ion-header>
 
 <ion-content>
-  <form (ngSubmit)="updatetUser()">
+  <form (ngSubmit)="updatetUser()" #editUser="ngForm">
   <ion-grid>
     <ion-row>
       <ion-col>
@@ -43,19 +43,19 @@
       <ion-col>
         <ion-item>
           <ion-label position="floating">Email</ion-label>
-          <ion-input type="email" [(ngModel)]="user.email" name="email"></ion-input>
+          <ion-input type="email" [(ngModel)]="user.email" name="email" required></ion-input>
         </ion-item>
       </ion-col>
       <ion-col>
         <ion-item>
           <ion-label position="floating">Password</ion-label>
-          <ion-input type="password" [(ngModel)]="user.password" name="password"></ion-input>
+          <ion-input type="password" [(ngModel)]="user.password" name="password" required></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col size="4">
-          <ion-button expand="full" type="submit">Update</ion-button>
+          <ion-button expand="full" type="submit" [disabled]=editUser.invalid>Update</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

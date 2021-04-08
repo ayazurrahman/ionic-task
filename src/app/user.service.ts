@@ -20,13 +20,8 @@ export class UserService {
     const httpHeaders = new HttpHeaders({
       'content-type': 'application/json; charset=UTF-8'
     });
-    return this.http.put('http://localhost:3000/users',{
-      method:'PUT',
-      body:{
-        data:user
-      },
-      headers: httpHeaders,
-    })
+    console.log(user)
+    return this.http.put('http://localhost:3000/users/'+user.id,user)
   }
 
   deleteUser(id){

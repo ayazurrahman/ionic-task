@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { UserService } from '../user.service';
+import { Plugins } from '@capacitor/core';
 
+const { Storage } = Plugins;
 @Injectable({
   providedIn: 'root'
 })
@@ -13,15 +15,20 @@ export class AuthService {
 
 
   login(fromData, userData){
+    let response = [];
     for(let i=0; i<userData.length; i++){
       if(userData[i].email==fromData.email && userData[i].password==fromData.password){
-        return this.isLoggedIn = true;
+        this.isLoggedIn = true;
+        response.push(this.isLoggedIn, userData[i])
+        this.storeUser(userData[i])
+        return response;
       }
     }
     return this.isLoggedIn = false;
   }
 
   userLogout(){
+    Storage.remove({ key: 'authData' });
     return this.isLoggedIn = false;
   }
 
@@ -41,7 +48,21 @@ export class AuthService {
 
   adminLogout(){
     this.isAdminLogged = false;
-    // return;
+  }
+
+  storeUser(user){
+    const data = JSON.stringify(user)
+    Plugins.Storage.set({key:'authData', value:data})
+  }
+
+  getUser(){
+    if(Storage.get({ key: 'authData' })){
+      this.isAdminLogged = true;
+    }
+  }
+
+  autoLogin(){
+    return Storage.get({ key: 'authData' }) ? 'true' : false;
   }
 
 

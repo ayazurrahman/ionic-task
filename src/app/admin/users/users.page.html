@@ -16,9 +16,10 @@
         <ion-list>
           <ion-item *ngFor="let item of users">
             <ion-avatar slot="start">
-              <img src="https://www.searchpng.com/wp-content/uploads/2019/02/Men-Profile-Image.png">
+              <img src="https://research.cbc.osu.edu/sokolov.8/wp-content/uploads/2017/12/profile-icon-png-898.png">
             </ion-avatar>
             <label [routerLink]="['/', 'admin', 'users', 'details', item]">{{item.first_name}} {{item.last_name}}</label>
+              <ion-button slot="end" [color]="item.active == true ? 'secondary':'light'" (click)="changeStatus(item)">Active</ion-button>
               <ion-icon name="create" slot="end" color="secondary" [routerLink]="['/','admin','create-user','edit', item]"></ion-icon>
               <ion-icon name="trash" slot="end" color="secondary" (click)="deleteUser(item.id)"></ion-icon>
           </ion-item>

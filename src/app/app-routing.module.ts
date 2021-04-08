@@ -5,11 +5,7 @@ import { AuthGuard } from './auth/auth.guard';
 const routes: Routes = [
   {
     path: 'admin',
-    loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule),
-    canActivate:[AuthGuard],
-    data: {
-      role: 'admin'
-    }
+    loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule)
   },
   {
     path: '',
@@ -28,6 +24,15 @@ const routes: Routes = [
       role: 'user'
     }
   },
+  {
+    path:':user-dash',
+    loadChildren: () => import('./user-dash/user-dash.module').then( m => m.UserDashPageModule),
+    canActivate:[AuthGuard],
+    data: {
+      role: 'user'
+    }
+
+  }
 ];
 
 @NgModule({

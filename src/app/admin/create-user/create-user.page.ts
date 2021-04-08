@@ -13,25 +13,27 @@ export class CreateUserPage implements OnInit {
   constructor(private userService:UserService, private router:Router, private route:ActivatedRoute) { }
 
   ngOnInit() {
-    this.route.paramMap.subscribe((paramMap)=>{
-      if(paramMap){
-        this.isCreate = false;
-        console.log(paramMap)
-        let paramData = paramMap['params']
-        console.log(paramData)
-        this.user = {
-          'first_name':paramData['first_name'],
-          'last_name':paramData['last_name'],
-          'age':paramData['age'],
-          'designation':paramData['designation'],
-          'email':paramData['email'],
-          'password':paramData['password'],
-        }
-         console.log(this.user)
-      }
-    })
+    // this.route.paramMap.subscribe((paramMap)=>{
+    //   if(paramMap){
+    //     this.isCreate = false;
+    //     console.log(paramMap)
+    //     let paramData = paramMap['params']
+    //     console.log(paramData)
+    //     this.user = {
+    //       'first_name':paramData['first_name'],
+    //       'last_name':paramData['last_name'],
+    //       'age':paramData['age'],
+    //       'designation':paramData['designation'],
+    //       'email':paramData['email'],
+    //       'password':paramData['password'],
+    //     }
+    //      console.log(this.user)
+    //   }
+    // })
   }
   submitUser(){
+    this.user.type = "user"
+    this.user.active = true;
     console.log(this.user)
     this.userService.saveUser(this.user).subscribe((res)=>{
       console.log(res)

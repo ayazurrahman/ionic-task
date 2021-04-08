@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from '../auth/auth.guard';
 
 import { AdminPage } from './admin.page';
 
@@ -13,7 +14,11 @@ const routes: Routes = [
     children:[
       {
         path:'',
-        loadChildren: () => import('./create-user/create-user.module').then( m => m.CreateUserPageModule)
+        loadChildren: () => import('./create-user/create-user.module').then( m => m.CreateUserPageModule),
+        canActivate:[AuthGuard],
+        data: {
+          role: 'admin'
+        }
       },
       {
         path:':user',
@@ -27,11 +32,19 @@ const routes: Routes = [
     children:[
       {
         path:'',
-        loadChildren: () => import('./users/users.module').then( m => m.UsersPageModule)
+        loadChildren: () => import('./users/users.module').then( m => m.UsersPageModule),
+        canActivate:[AuthGuard],
+        data: {
+          role: 'admin'
+        }
       },
       {
         path:':user',
-        loadChildren: () => import('./user-detail/user-detail.module').then( m => m.UserDetailPageModule)
+        loadChildren: () => import('./user-detail/user-detail.module').then( m => m.UserDetailPageModule),
+        canActivate:[AuthGuard],
+        data: {
+          role: 'admin'
+        }
       }
     ]
   }

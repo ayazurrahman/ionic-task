@@ -3,6 +3,9 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 import { AuthService } from './auth.service';
+import { Plugins } from '@capacitor/core';
+
+const { Storage } = Plugins;
 
 @Component({
   selector: 'app-auth',
@@ -12,7 +15,7 @@ import { AuthService } from './auth.service';
 export class AuthPage implements OnInit {
   userLogin;
   adminLogin;
-  role = 'admin';
+  role;
   user;
 
 
@@ -22,7 +25,13 @@ export class AuthPage implements OnInit {
       this.user = res;
       console.log(this.user)
     })
-
+    if(this.role == "admin" && this.authService.isAdminLogged){
+      this.route.navigateByUrl('/admin')
+    }
+    if(this.role == "user" && this.authService.isLoggedIn){
+      this.route.navigateByUrl('/user-dash')
+    }
+    const userData = Storage.get({ key: 'authData' });
   }
 
   segmentChanged(event, formData){
@@ -34,9 +43,9 @@ export class AuthPage implements OnInit {
     console.log(this.role)
     if(this.role == "user"){
         this.userLogin = this.authService.login(loginUser.form.value, this.user);
-        console.log(this.userLogin)
-        if(this.userLogin){
-          this.route.navigateByUrl('/user-dash')
+        console.log(this.userLogin[0])
+        if(this.userLogin[0]){
+          this.route.navigate(['user-dash',this.userLogin[1]])
           loginUser.reset();
         }
     }

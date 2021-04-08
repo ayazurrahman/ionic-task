@@ -14,10 +14,6 @@ export class UsersPage implements OnInit {
   constructor(private userService:UserService, private route:ActivatedRoute, public alertCtrl:AlertController) { }
 
   ngOnInit() {
-      // this.userService.getUsers().subscribe((res)=>{
-      //   console.log(res)
-      //   this.users = res
-      // });
   }
   ionViewWillEnter(){
     this.userService.getUsers().subscribe((res)=>{
@@ -49,7 +45,19 @@ export class UsersPage implements OnInit {
       ]
     });
     await confirm.present();
+  }
 
+  changeStatus(user){
+    console.log(user.active)
+    if(user.active == true){
+      user.active = false;
+
+    }else{
+      user.active = true;
+    }
+    this.userService.updateUser(user).subscribe(res=>{
+      console.log(res)
+    })
   }
 
 }
