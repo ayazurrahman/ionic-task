@@ -15,8 +15,9 @@ const { Storage } = Plugins;
 export class AuthPage implements OnInit {
   userLogin;
   adminLogin;
-  role;
+  role = "admin";
   user;
+  errorMsg;
 
 
   constructor(private userService:UserService, private authService:AuthService, private route:Router) { }
@@ -25,21 +26,17 @@ export class AuthPage implements OnInit {
       this.user = res;
       console.log(this.user)
     })
-    if(this.role == "admin" && this.authService.isAdminLogged){
-      this.route.navigateByUrl('/admin')
-    }
-    if(this.role == "user" && this.authService.isLoggedIn){
-      this.route.navigateByUrl('/user-dash')
-    }
-    const userData = Storage.get({ key: 'authData' });
   }
 
+
   segmentChanged(event, formData){
+    this.errorMsg = "";
     this.role = event.detail.value;
     formData.reset()
   }
 
   loginForm(loginUser:NgForm){
+    this.errorMsg = "";
     console.log(this.role)
     if(this.role == "user"){
         this.userLogin = this.authService.login(loginUser.form.value, this.user);
@@ -47,6 +44,8 @@ export class AuthPage implements OnInit {
         if(this.userLogin[0]){
           this.route.navigate(['user-dash',this.userLogin[1]])
           loginUser.reset();
+        }else{
+          this.errorMsg = "Email or Password is not correct";
         }
     }
     if(this.role == "admin"){
@@ -55,6 +54,8 @@ export class AuthPage implements OnInit {
       if(this.adminLogin){
         this.route.navigateByUrl('/admin')
         loginUser.reset();
+      }else{
+        this.errorMsg = "Email or Password is not correct";
       }
     }
   }

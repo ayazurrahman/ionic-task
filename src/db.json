@@ -29,8 +29,7 @@
       "email": "doe@gmail.com",
       "password": "123456",
       "id": 5,
-      "type": "user",
-      "active": false
+      "type": "user"
     },
     {
       "first_name": "Lerry",
@@ -46,13 +45,23 @@
     {
       "first_name": "Ayazur Rahman",
       "last_name": "Shaikh",
+      "age": 23,
       "designation": "Software Engineer",
-      "age": 24,
       "email": "ayazur@gmail.com",
+      "password": "123456",
+      "id": 7,
+      "type": "user"
+    },
+    {
+      "first_name": "Merry",
+      "last_name": "Ron",
+      "designation": "HR",
+      "age": 24,
+      "email": "merry@gmail.com",
       "password": "123456",
       "type": "user",
       "active": true,
-      "id": 7
+      "id": 8
     }
   ],
   "admin": [

@@ -55,15 +55,15 @@ export class AuthService {
     Plugins.Storage.set({key:'authData', value:data})
   }
 
-  getUser(){
+  async getUser(){
     if(Storage.get({ key: 'authData' })){
       this.isAdminLogged = true;
+      const storedUser = await Storage.get({ key: 'authData' })
+      const user = JSON.parse(storedUser.value);
+      return user;
     }
   }
 
-  autoLogin(){
-    return Storage.get({ key: 'authData' }) ? 'true' : false;
-  }
 
 
 }

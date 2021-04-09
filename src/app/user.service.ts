@@ -11,7 +11,7 @@ export class UserService {
     const httpHeaders = new HttpHeaders({
       'content-type': 'application/json'
     });
-    return this.http.post('http://localhost:3000/users',user, {
+    return this.http.post('http://192.168.2.230:3000/users',user, {
       headers: httpHeaders,
     });
   }
@@ -21,19 +21,19 @@ export class UserService {
       'content-type': 'application/json; charset=UTF-8'
     });
     console.log(user)
-    return this.http.put('http://localhost:3000/users/'+user.id,user)
+    return this.http.put('http://192.168.2.230:3000/users/'+user.id,user)
   }
 
   deleteUser(id){
-    return this.http.delete('http://localhost:3000/users/'+id)
+    return this.http.delete('http://192.168.2.230:3000/users/'+id)
   }
 
   getUsers(){
-    return this.http.get('http://localhost:3000/users')
+    return this.http.get('http://192.168.2.230:3000/users')
   }
 
   getAdmin(){
-    return this.http.get('http://localhost:3000/admin')
+    return this.http.get('http://192.168.2.230:3000/admin')
   }
 
 
