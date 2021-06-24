@@ -18,6 +18,8 @@ export class AuthPage implements OnInit {
   role = "admin";
   user;
   errorMsg;
+  admin;
+  authForm:any = {};
 
 
   constructor(private userService:UserService, private authService:AuthService, private route:Router) { }
@@ -26,6 +28,27 @@ export class AuthPage implements OnInit {
       this.user = res;
       console.log(this.user)
     })
+    this.userService.getAdmin().subscribe(res=>{
+      this.admin = res;
+    })
+    this.getUser()
+  }
+
+
+
+  async getUser(){
+    const storedUser = await Storage.get({ key: 'authData' })
+    if(storedUser.value){
+      const user = JSON.parse(storedUser.value);
+      this.user = user;
+      if(this.user.type == 'user'){
+        this.authService.isLoggedIn = true
+        this.route.navigate(['user-dash',this.user])
+      }else{
+        this.authService.isAdminLogged = true;
+        this.route.navigateByUrl('/admin')
+      }
+    }
   }
 
 
@@ -35,25 +58,25 @@ export class AuthPage implements OnInit {
     formData.reset()
   }
 
-  loginForm(loginUser:NgForm){
+  loginForm(formData){
     this.errorMsg = "";
-    console.log(this.role)
+    console.log(this.authForm)
     if(this.role == "user"){
-        this.userLogin = this.authService.login(loginUser.form.value, this.user);
+        this.userLogin = this.authService.login(this.authForm, this.user);
         console.log(this.userLogin[0])
         if(this.userLogin[0]){
           this.route.navigate(['user-dash',this.userLogin[1]])
-          loginUser.reset();
+          formData.reset()
         }else{
           this.errorMsg = "Email or Password is not correct";
         }
     }
     if(this.role == "admin"){
-      this.adminLogin = this.authService.adminLogin(loginUser.form.value);
+      this.adminLogin = this.authService.adminLogin(this.authForm, this.admin);
       console.log("Admin",this.adminLogin)
-      if(this.adminLogin){
+      if(this.adminLogin[0]){
         this.route.navigateByUrl('/admin')
-        loginUser.reset();
+        formData.reset()
       }else{
         this.errorMsg = "Email or Password is not correct";
       }

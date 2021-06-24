@@ -17,8 +17,8 @@ export class UsersPage implements OnInit {
   }
   ionViewWillEnter(){
     this.userService.getUsers().subscribe((res)=>{
-      console.log(res)
       this.users = res
+      console.log(res)
     })
   }
 
@@ -49,11 +49,10 @@ export class UsersPage implements OnInit {
 
   changeStatus(user){
     console.log(user.active)
-    if(user.active == true){
-      user.active = false;
-
+    if(user.active == 'true'){
+      user.active = 'false';
     }else{
-      user.active = true;
+      user.active = 'true';
     }
     this.userService.updateUser(user).subscribe(res=>{
       console.log(res)

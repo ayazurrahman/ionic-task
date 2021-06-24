@@ -25,6 +25,8 @@ export class EditUserPage implements OnInit {
           'email':paramData['email'],
           'password':paramData['password'],
           'id':paramData['id'],
+          'active':paramData['active'],
+          'type':paramData['type'],
         }
          console.log(this.user)
       }
@@ -33,7 +35,7 @@ export class EditUserPage implements OnInit {
 
   updatetUser(){
     console.log("Send Data",this.user)
-    this.user.type = "user"
+    // this.user.type = "user"
     this.userService.updateUser(this.user).subscribe((res)=>{
       console.log(this.authService.isLoggedIn)
       if(res && this.authService.isLoggedIn){

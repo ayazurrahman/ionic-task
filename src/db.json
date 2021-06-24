@@ -1,67 +1,41 @@
 {
   "users": [
     {
-      "first_name": "Jon",
-      "last_name": "Snow",
-      "age": 30,
-      "designation": "King of the North",
-      "email": "jon@gmail.com",
-      "password": "123456",
-      "id": 3,
-      "type": "user",
-      "active": false
-    },
-    {
       "first_name": "Berry",
       "last_name": "Allen",
-      "age": "24",
+      "age": 26,
       "designation": "Software Eng",
       "email": "berry@gmail.com",
       "password": "12345",
       "id": 4,
+      "active": "true",
       "type": "user"
     },
     {
       "first_name": "Jhon",
       "last_name": "Doe",
-      "age": 30,
+      "age": "30",
+      "active": "false",
+      "type": "user",
       "designation": "Consultant",
       "email": "doe@gmail.com",
       "password": "123456",
       "id": 5,
-      "type": "user"
+      "present": "true",
+      "pdate": "4/15/2021"
     },
     {
       "first_name": "Lerry",
       "last_name": "Paige",
-      "age": 42,
+      "age": "42",
       "designation": "CEO",
       "email": "lerry@gmail.com",
       "password": "123456",
       "id": 6,
+      "active": "true",
       "type": "user",
-      "active": true
-    },
-    {
-      "first_name": "Ayazur Rahman",
-      "last_name": "Shaikh",
-      "age": 23,
-      "designation": "Software Engineer",
-      "email": "ayazur@gmail.com",
-      "password": "123456",
-      "id": 7,
-      "type": "user"
-    },
-    {
-      "first_name": "Merry",
-      "last_name": "Ron",
-      "designation": "HR",
-      "age": 24,
-      "email": "merry@gmail.com",
-      "password": "123456",
-      "type": "user",
-      "active": true,
-      "id": 8
+      "present": "true",
+      "pdate": "4/15/2021"
     }
   ],
   "admin": [
@@ -69,6 +43,18 @@
       "email": "admin@admin.com",
       "password": "123456",
       "type": "admin"
+    }
+  ],
+  "task": [
+    {
+      "date": "4/19/2021",
+      "userID": 4,
+      "id": 1
+    },
+    {
+      "date": "4/20/2021",
+      "userID": 6,
+      "id": 2
     }
   ]
 }

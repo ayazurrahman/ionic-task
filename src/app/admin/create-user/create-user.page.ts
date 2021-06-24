@@ -33,7 +33,7 @@ export class CreateUserPage implements OnInit {
   }
   submitUser(){
     this.user.type = "user"
-    this.user.active = true;
+    this.user.active = 'true';
     console.log(this.user)
     this.userService.saveUser(this.user).subscribe((res)=>{
       console.log(res)

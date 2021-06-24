@@ -15,9 +15,11 @@ export class AuthService {
 
 
   login(fromData, userData){
+    console.log(fromData, userData)
     let response = [];
     for(let i=0; i<userData.length; i++){
-      if(userData[i].email==fromData.email && userData[i].password==fromData.password){
+      console.log(userData[i])
+      if(userData[i].email==fromData.email && userData[i].password==fromData.password && userData[i].active == 'true'){
         this.isLoggedIn = true;
         response.push(this.isLoggedIn, userData[i])
         this.storeUser(userData[i])
@@ -32,35 +34,41 @@ export class AuthService {
     return this.isLoggedIn = false;
   }
 
-  adminLogin(formData){
-    this.userService.getAdmin().subscribe(res=>{
-      this.admin = res;
-      console.log("Admin Push",this.admin)
-    })
-    for(let i=0; i<this.admin.length; i++){
-      if(this.admin[i].email==formData.email && this.admin[i].password==formData.password){
-        console.log(this.isAdminLogged)
-        return this.isAdminLogged = true;
+  adminLogin(formData, admin){
+    let response = [];
+    for(let i=0; i<admin.length; i++){
+        if(admin[i].email==formData.email && admin[i].password==formData.password){
+          console.log(this.isAdminLogged)
+          this.isAdminLogged = true;
+          response.push(this.isAdminLogged, admin[i])
+        this.storeUser(admin[i])
+          return response;
+        }
       }
-    }
-    return this.isAdminLogged = false;
+      return this.isAdminLogged = false;
   }
 
   adminLogout(){
-    this.isAdminLogged = false;
+    Storage.remove({ key: 'authData' });
+    return this.isAdminLogged = false;
   }
 
   storeUser(user){
     const data = JSON.stringify(user)
     Plugins.Storage.set({key:'authData', value:data})
+    // this.getUser();
   }
 
   async getUser(){
     if(Storage.get({ key: 'authData' })){
-      this.isAdminLogged = true;
       const storedUser = await Storage.get({ key: 'authData' })
       const user = JSON.parse(storedUser.value);
-      return user;
+      if(user.type == 'user'){
+        return this.isLoggedIn = true;
+      }else{
+        return this.isAdminLogged = true;
+      }
+      // return user;
     }
   }
 

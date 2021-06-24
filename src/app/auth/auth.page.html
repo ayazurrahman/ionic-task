@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Login</ion-title>
+    <ion-title>Logins</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -19,7 +19,7 @@
       <ion-col>
         <ion-item>
           <ion-label position="floating">Email</ion-label>
-          <ion-input type="email" name="email" ngModel required email></ion-input>
+          <ion-input type="email" name="email" [(ngModel)]="authForm.email" required email></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -27,20 +27,22 @@
       <ion-col>
         <ion-item>
           <ion-label position="floating">Password</ion-label>
-          <ion-input type="password" name="password" ngModel required minlength="5"></ion-input>
+          <ion-input type="password" name="password" [(ngModel)]="authForm.password" required minlength="5"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-          <ion-button expand="full" [disabled]="login.invalid" type="submit">Login</ion-button>
+          <ion-button type="submit" expand="full" [disabled]="login.invalid">Login</ion-button>
       </ion-col>
     </ion-row>
   </form>
-  <ion-row>
-    <ion-col style="text-align: center;">
-        <ion-label color="danger">{{errorMsg}}</ion-label>
-    </ion-col>
-  </ion-row>
+  </ion-grid>
+  <ion-grid padding>
+    <ion-row>
+      <ion-col style="text-align: center;">
+          <ion-label color="danger">{{errorMsg}}</ion-label>
+      </ion-col>
+    </ion-row>
   </ion-grid>
 </ion-content>

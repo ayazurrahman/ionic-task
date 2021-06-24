@@ -15,27 +15,27 @@
         <ion-card style="text-align: center;">
           <ion-card-header>
             <ion-card-title>
-              {{user.first_name+ ' '+ user.last_name}}
+              {{loggedUser.first_name+ ' '+ loggedUser.last_name}}
             </ion-card-title>
             <ion-card-subtitle>
-              {{user.designation}}
+              {{loggedUser.age}}<br>
+              {{loggedUser.designation}}
             </ion-card-subtitle>
           </ion-card-header>
-          <ion-img src="https://www.searchpng.com/wp-content/uploads/2019/02/Men-Profile-Image.png"></ion-img>
+          <!-- <ion-img src="https://www.searchpng.com/wp-content/uploads/2019/02/Men-Profile-Image.png"></ion-img> -->
           <ion-card-content>
-            <p>{{user.email}}</p>
+            <p>{{loggedUser.email}}</p>
           </ion-card-content>
-
           <div>
-            <ion-button expand="block" color="secondary" [routerLink]="['/','admin','create-user','edit', user]">Edit</ion-button>
+            <ion-button expand="block" color="secondary" [routerLink]="['/','admin','create-user','edit', loggedUser]">Edit</ion-button>
           </div>
-
         </ion-card>
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col size="8" offset="2" text-center>
-        <ion-button expand="full">Assign a presentation</ion-button>
+      <ion-col size="8" offset="2"  style="text-align: center;">
+        <!-- <ion-button expand="full" (click)="assigningTask()">Lead the meeting</ion-button> -->
+        <ion-label>{{this.message}}</ion-label>
       </ion-col>
     </ion-row>
     </ion-grid>
